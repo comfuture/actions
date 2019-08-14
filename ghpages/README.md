@@ -54,10 +54,21 @@ None.
 
 ```
 action "Deploy to GitHub Pages" {
-  uses = "maxheld83/ghpages@v0.2.1"
+  uses = "comfuture/actions/ghpages@master"
   env = {
     BUILD_DIR = "public/"
   }
   secrets = ["GH_PAT"]
 }
+```
+
+or use it in yaml syntax
+
+```
+steps:
+  - name: Deploy to GitHub Pages
+    uses: comfuture/actions/ghpages@master
+    env:
+      BUILD_DIR: public/
+      GH_PAT: ${{ secrets.GH_PAT }}
 ```

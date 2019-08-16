@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sh -c "slackcli $@"
+sh -c "slackcli $*"

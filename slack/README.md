@@ -41,14 +41,18 @@ jobs:
           --color good \
           --fields '{"title": "Status", "value": "Normal"}' \
           --text "Hello, world!" \
-          --channel "#notification" \
+          --channel "#notification"
 ```
 
 ### upload file to slack
 
 ```yaml
 # ...
-      args: file upload dist/bundle.zip #build
+      args: |
+        file upload dist/bundle.zip \
+          --title "Built new bundle:" \
+          --comment "Size: ${stat -f%z dist/bundle.zip} bytes" \
+          --channels "#build"
 ```
 
 Please refer to [slack-cli][slack-cli] github page

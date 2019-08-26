@@ -24,8 +24,10 @@ if [ -z "$(git status --porcelain)" ]; then
     echo "Nothing to publish"
     exit 0
 fi
+git remote rm origin || true
+git remote add origin "${REPO}"
 git add .
-git commit -m 'Deploy to GitHub pages'
+git commit --allow-empty -m 'Deploy to GitHub pages'
 git push --force $REPO master:$REMOTE_BRANCH
 rm -rf .git
 cd $GITHUB_WORKSPACE

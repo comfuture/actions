@@ -6,4 +6,4 @@ branding:
   color: purple
 runs:
   using: docker
-  image: Dockerfile
+  image: docker://comfuture/slack-action:0.1

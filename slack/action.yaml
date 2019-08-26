@@ -1,0 +1,9 @@
+name: slack
+author: comfuture<comfuture@gmail.com>
+description: Post some message to slack channel
+branding:
+  icon: mic
+  color: purple
+runs:
+  using: docker
+  image: Dockerfile

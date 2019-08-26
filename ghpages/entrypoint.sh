@@ -15,7 +15,7 @@ else
   TARGET_BRANCH="gh-pages"
 fi
 
-: "${REMOTE_BRANCH:=TARGET_BRANCH}"
+: "${REMOTE_BRANCH:=$TARGET_BRANCH}"
 
 git init
 git config user.name "${GITHUB_ACTOR}"

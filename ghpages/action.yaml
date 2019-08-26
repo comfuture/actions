@@ -1,0 +1,15 @@
+name: Publish to ghpages
+author: Changkyun Kim <comfuture@gmail.com>
+description: publish files to gh-pages (or given branch name).
+branding:
+  icon: git-branch
+  color: green
+inputs:
+  build_dir:
+    description: path to source directory
+    required: true
+env:
+  BUILD_DIR: ${{ inputs.build_dir }}
+runs:
+  using: docker
+  image: Dockerfile

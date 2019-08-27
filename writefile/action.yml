@@ -1,0 +1,17 @@
+name: writefile
+author: comfuture<comfuture@gmail.com>
+description: simply write content to given filename
+branding:
+  icon: edit-2
+  color: yellow
+inputs:
+  filename:
+    description: path to create file
+    required: true
+  content:
+    description: content to write
+    required: true
+    default: ''
+runs:
+  using: docker
+  image: Dockerfile

@@ -3,7 +3,6 @@
 set -e
 
 RESULT=$(slack $*)
-echo $RESULT
-TS=$(echo $RESULT | jq '.ts')
-echo "##[set-output name=message_ts] $TS"
+TS=$(echo $RESULT | jq -r '.ts')
+echo "##[set-output name=message_ts]$TS"
 exit 0

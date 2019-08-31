@@ -23,6 +23,6 @@ jobs:
     - name: Build and push
       uses: actions/docker/cli-multi@master
       with:
-        args: |
-          build -t docker.pkg.github.com/comfuture/actions/slack:latest .
-          push docker.pkg.github.com/comfuture/actions/slack:latest
+        args: >
+          "build -t docker.pkg.github.com/comfuture/actions/slack:latest ."
+          "push docker.pkg.github.com/comfuture/actions/slack:latest"

@@ -23,5 +23,5 @@ jobs:
       uses: actions/docker/cli-multi@v1
       with:
         args:
-        - build -t docker.pkg.github.com/comfuture/actions/slack:latest
+        - build -t docker.pkg.github.com/comfuture/actions/slack:latest .
         - push docker.pkg.github.com/comfuture/actions/slack:latest

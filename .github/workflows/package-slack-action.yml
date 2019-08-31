@@ -1,0 +1,27 @@
+name: Build slack image
+
+on:
+  push:
+    branches:
+    - master
+    path:
+    - slack/*
+
+jobs:
+  publish:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: login to github package registry
+      uses: actions/docker/login@v1
+      env:
+        DOCKER_USER_NAME: comfuture
+        DOCKER_PASSWORD: ${{ secrets.GITHUB_PAT }}
+    - name: Build and push
+      uses: actions/docker/cli-multi@v1
+      with:
+        args:
+        - build -t docker.pkg.github.com/comfuture/actions/slack:latest
+        - push docker.pkg.github.com/comfuture/actions/slack:latest

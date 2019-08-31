@@ -17,7 +17,8 @@ jobs:
     - name: login to github package registry
       uses: actions/docker/login@master
       env:
-        DOCKER_USER_NAME: comfuture
+        DOCKER_REGISTRY_URL: docker.pkg.github.com
+        DOCKER_USERNAME: comfuture
         DOCKER_PASSWORD: ${{ secrets.GITHUB_PAT }}
     - name: Build and push
       uses: actions/docker/cli-multi@master

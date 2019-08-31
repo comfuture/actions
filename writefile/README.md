@@ -2,7 +2,7 @@
 
 simply write some text content into file.
 
-```
+```yaml
 # ...
 steps:
   - uses: comfuture/actions/writefile@master
@@ -13,3 +13,13 @@ steps:
         We hope your brief detention in the relaxation vault has been a pleasant one.
         Your specimen has been processed and we are now ready to begin the test proper.
 ```
+
+of course, you can also use plain bash script like this:
+
+```bash
+$ cat <<EOF > path/to/file.txt
+contents here...
+and here
+EOF
+```
+

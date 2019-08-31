@@ -8,8 +8,9 @@ inputs:
   build_dir:
     description: path to source directory
     required: true
-env:
-  BUILD_DIR: ${{ inputs.build_dir }}
+outputs:
+  message_ts:
+    description: ts of sent message if available
 runs:
   using: docker
   image: Dockerfile

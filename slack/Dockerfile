@@ -9,6 +9,6 @@ RUN apk --update add bash sed curl jq && \
     rm /var/cache/apk/*
 
 ADD slack /bin
-ADD entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

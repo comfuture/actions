@@ -1,0 +1,9 @@
+name: serverless
+author: comfuture<comfuture@gmail.com>
+description: performs serverless command
+branding:
+  icon: server
+  color: yellow
+runs:
+  using: docker
+  image: Dockerfile

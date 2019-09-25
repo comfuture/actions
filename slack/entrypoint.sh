@@ -2,5 +2,5 @@
 
 set -e
 
-sh -c "slack $*"
+sh -c "slack $@"
 exit 0

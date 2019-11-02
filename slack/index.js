@@ -25,7 +25,7 @@ function getJSON(name) {
 
   let text = core.getInput('message');
   let channel = core.getInput('channel');
-  if (!channel.startsWith('#')) {
+  if (!/^[CGU\#]/.test(channel)) {
     channel = `#${channel}`;
   }
   let payload = { channel, text, as_user: true, mrkdwn: true, parse: 'full' }

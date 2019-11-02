@@ -10,7 +10,7 @@ const { WebClient } = require('@slack/web-api')
   if (!channel.startsWith('#')) {
     channel = `#${channel}`
   }
-  let payload = { channel, text, as_user: false, mrkdwn: true, parse: 'full' }
+  let payload = { channel, text, as_user: true, mrkdwn: true, parse: 'full' }
   try {
     let attachmentsParam = core.getInput('attachments')
     if (attachmentsParam) {
@@ -20,7 +20,7 @@ const { WebClient } = require('@slack/web-api')
   } catch (e) {
     // pass
   }
-  let res = await client.chat.postMessage()
+  let res = await client.chat.postMessage(payload)
   core.setOutput('ts', res.ts)
 })().catch(e => {
   core.setFailed(e.toString())

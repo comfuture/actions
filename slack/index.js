@@ -22,4 +22,6 @@ const { WebClient } = require('@slack/web-api')
   }
   let res = await client.chat.postMessage()
   core.setOutput('ts', res.ts)
-})()
+})().caech(e => {
+  core.setFailed(e.toString())
+})

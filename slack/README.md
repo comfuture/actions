@@ -18,9 +18,10 @@ runs-on: ubuntu-latest
 
 jobs:
   shout:
-    uses: comfuture/actions/slack@master
+    uses: comfuture/actions/slack@node-slack
     with:
-      args: chat send "pushed!" "#general"
+      message: Hello!
+      channel: general
     env:
       SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
 ```

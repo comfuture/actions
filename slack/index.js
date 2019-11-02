@@ -10,7 +10,7 @@ const { WebClient } = require('@slack/web-api')
   if (!channel.startsWith('#')) {
     channel = `#${channel}`
   }
-  let payload = { channel, text, mrkdwn: true, parse: 'full' }
+  let payload = { channel, text, as_user: false, mrkdwn: true, parse: 'full' }
   try {
     let attachmentsParam = core.getInput('attachments')
     if (attachmentsParam) {

@@ -44,7 +44,7 @@ function getJSON(name) {
     res = await client.chat.postMessage(payload);
   }
   core.setOutput('ts', res.ts);
-  core.setOuutput('channel', res.channel);
+  core.setOutput('channel', res.channel);
 })().catch(e => {
   core.setFailed(e.toString());
 });

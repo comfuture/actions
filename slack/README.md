@@ -44,19 +44,23 @@ jobs:
           --channel "#notification"
 ```
 
-### upload file to slack
+### update message with ts output
 
 ```yaml
-# ...
-      args: |
-        file upload dist/bundle.zip \
-          --title "Built new bundle:" \
-          --comment "Size: ${stat -f%z dist/bundle.zip} bytes" \
-          --channels "#build"
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: comfuture/actions/slack@latest
+      id: hello
+      with:
+        channel: general
+        message: Hello?
+    - runs: sleep 3
+    - uses: comfuture/actions/slack@latest
+      with:
+        channel: ${{ steps.hello.outputs.channel }}
+        message: Bye~
+        update: ${{ steps.hello.outputs.ts }}
+
 ```
-
-Please refer to [slack-cli][slack-cli] github page
-
-
-
-[slack-cli]: https://github.com/rockymadden/slack-cli

@@ -1,27 +1,49 @@
-const core = require('@actions/core')
-const { WebClient } = require('@slack/web-api')
+const core = require('@actions/core');
+const YAML = require('yaml');
+const { WebClient } = require('@slack/web-api');
 
-;(async () => {
-  const token = process.env.SLACK_TOKEN
-  const client = new WebClient(token)
+function getInput(name) {
+  return core.getInput(name);
+}
 
-  let text = core.getInput('message')
-  let channel = core.getInput('channel')
-  if (!channel.startsWith('#')) {
-    channel = `#${channel}`
-  }
-  let payload = { channel, text, as_user: true, mrkdwn: true, parse: 'full' }
+function getJSON(name) {
+  let ret;
   try {
-    let attachmentsParam = core.getInput('attachments')
-    if (attachmentsParam) {
-      let attachments = JSON.parse(attachmentsParam)
-      payload['attachments'] = attachments
+    let param = getInput(name);
+    if (param && (ret = YAML.parse(param))) {
+      return ret;
     }
   } catch (e) {
     // pass
   }
-  let res = await client.chat.postMessage(payload)
-  core.setOutput('ts', res.ts)
+  return ret;
+}
+
+(async () => {
+  const token = process.env.SLACK_TOKEN;
+  const client = new WebClient(token);
+
+  let text = core.getInput('message');
+  let channel = core.getInput('channel');
+  if (!channel.startsWith('#')) {
+    channel = `#${channel}`;
+  }
+  let payload = { channel, text, as_user: true, mrkdwn: true, parse: 'full' }
+
+  // attachments
+  payload['attachments'] = getJSON('attachments');
+
+  let res;
+  let ts = getInput('update');
+  if (ts) {
+    // update
+    payload['ts'] = ts;
+    res = await client.chat.update(payload);
+  } else {
+    // post
+    res = await client.chat.postMessage(payload);
+  }
+  core.setOutput('ts', res.ts);
 })().catch(e => {
-  core.setFailed(e.toString())
-})
+  core.setFailed(e.toString());
+});

@@ -10,9 +10,12 @@ inputs:
     required: true
   message:
     description: Message to say
-    required: true
+    required: false
   attachments:
     description: additional fields
+    required: false
+  update:
+    description: ts to be updated
     required: false
 outputs:
   ts:

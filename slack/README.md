@@ -18,7 +18,7 @@ runs-on: ubuntu-latest
 
 jobs:
   shout:
-    uses: comfuture/actions/slack@node-slack
+    uses: comfuture/actions/slack@latest
     with:
       message: Hello!
       channel: general
@@ -30,25 +30,30 @@ jobs:
 
 ### format message and attachment
 
+attachment should be a multiline text block that contains YAML or JSON structure.
+
 ```yaml
 # ...
 jobs:
   preview:
-    uses: comfuture/actions/slack@master
+    uses: comfuture/actions/slack@latest
     with:
-      args: |
-        chat send \
-          --image https://lorempixel.com/400/200/ \
-          --color good \
-          --fields '{"title": "Status", "value": "Normal"}' \
-          --text "Hello, world!" \
-          --channel "#notification"
+      channel: general
+      attachments: >
+        - pretext: 서버 상태
+          color: good
+          fields:
+          - title: 'Kubernetes
+            value: Everything OK
+            short: false
 ```
 
 ### upload file to slack
 
 ```yaml
 # ...
+    with:
+      file: dist/bundle.zip
       args: |
         file upload dist/bundle.zip \
           --title "Built new bundle:" \

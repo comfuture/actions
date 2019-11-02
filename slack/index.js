@@ -1,7 +1,7 @@
 const core = require('@actions/core')
 const { WebClient } = require('@slack/web-api')
 
-(async () => {
+;(async () => {
   const token = process.env.SLACK_TOKEN
   const client = new WebClient(token)
 

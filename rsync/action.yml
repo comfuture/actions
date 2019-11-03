@@ -19,7 +19,7 @@ inputs:
   options:
     description: rsync options
     required: false
-    default: -avz
+    default: -avzO
 runs:
   using: docker
   image: Dockerfile

@@ -17,6 +17,6 @@ jobs:
     # simple message
     - uses: ./rsync
       with:
-        dest: ubuntu@sg.changkyun.kim:/tmp
+        dest: ubuntu@sg.changkyun.kim:/tmp/actions
       env:
         SSH_KEY: ${{ secrets.SSH_KEY }}

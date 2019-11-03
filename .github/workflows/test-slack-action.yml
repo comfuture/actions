@@ -1,0 +1,43 @@
+name: Test slack action
+
+on:
+  push:
+    branches:
+    - master
+    path:
+    - slack/*
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    # simple message
+    - uses: comfuture/actions/slack@master
+      id: hello
+      with:
+        channel: general
+        message: 심플 메시지 전송 성공
+      env:
+        SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+    # update message
+    - uses: comfuture/actions/slack@master
+      with:
+        channel: ${{ steps.hello.outputs.channel }}
+        message: 심플 메시지 전송 성공, 및 기존 메시지 변경 성공
+        update: ${{ steps.hello.outputs.ts }}
+      env:
+        SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+    # attachments
+    - uses: comfuture/actions/slack@master
+      with:
+        channel: ${{ steps.hello.outputs.channel }}
+        message: attachments 전송 성공
+        attachments: >
+          - color: good
+            fields:
+            - title: 상태
+              value: Good
+      env:
+        SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}

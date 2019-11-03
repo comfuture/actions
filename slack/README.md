@@ -1,5 +1,7 @@
 # slack
 
+![](https://github.com/comfuture/actions/workflows/.github/workflows/test-slack-action.yml/badge.svg)
+
 performs simple slack command via cli.
 
 ## prerequirement

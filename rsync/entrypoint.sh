@@ -12,4 +12,4 @@ echo "$SSH_KEY" > $HOME/.ssh/deploy_key
 chmod 0400 "$HOME/.ssh/deploy_key"
 
 # run!
-sh -c "rsync $INPUT_OPTIONS -e 'ssh -i $HOME/.ssh/deploy_key -o StrictHostKeyChecking=no -p $SSH_PORT' $GITHUB_WORKSPACE/$SOURCE $INPUT_DEST"
+sh -c "rsync $INPUT_OPTIONS -e 'ssh -i $HOME/.ssh/deploy_key -o StrictHostKeyChecking=no -p $SSH_PORT' $SOURCE $INPUT_DEST"

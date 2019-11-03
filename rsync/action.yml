@@ -19,7 +19,7 @@ inputs:
   options:
     description: rsync options
     required: false
-    default: -avzO
+    default: -avzO --exclude=".git"
 runs:
   using: docker
   image: Dockerfile

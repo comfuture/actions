@@ -1,0 +1,25 @@
+name: rsync
+author: comfuture<comfuture@gmail.com>
+description: rsync files to destination server
+branding:
+  icon: truck
+  color: green
+inputs:
+  source:
+    description: source location `.`
+    required: false
+    default: .
+  dest:
+    description: target location `user@server:path`
+    required: true
+  ssh-port:
+    description: ssh port (default=22)
+    required: false
+    default: 22
+  options:
+    description: rsync options
+    required: false
+    default: -avz
+runs:
+  using: docker
+  image: Dockerfile

@@ -14,7 +14,7 @@ jobs:
     
     steps:
     # simple message
-    - uses: comfuture/actions/slack@master
+    - uses: ./slack
       id: hello
       with:
         channel: general
@@ -22,7 +22,7 @@ jobs:
       env:
         SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
     # update message
-    - uses: comfuture/actions/slack@master
+    - uses: ./slack
       with:
         channel: ${{ steps.hello.outputs.channel }}
         message: 심플 메시지 전송 성공, 및 기존 메시지 변경 성공
@@ -30,7 +30,7 @@ jobs:
       env:
         SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
     # attachments
-    - uses: comfuture/actions/slack@master
+    - uses: ./slack
       with:
         channel: ${{ steps.hello.outputs.channel }}
         message: attachments 전송 성공

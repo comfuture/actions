@@ -2,16 +2,12 @@ name: Test slack action
 
 on:
   push:
-    branches:
-    - master
-    path:
-    - slack/*
-
+    paths:
+    - slack/**
+    - .github/workflows/test-slack-action.yml
 jobs:
   test:
-
     runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v1
     # simple message

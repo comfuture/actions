@@ -3,7 +3,8 @@ name: Test ssh action
 on:
   push:
     paths:
-    - ssh/*
+    - ssh/**
+    - .github/workflows/test-ssh-action.yml
 
 jobs:
   test:

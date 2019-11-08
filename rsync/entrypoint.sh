@@ -16,5 +16,5 @@ sh -c "rsync $INPUT_OPTIONS -e 'ssh -i $HOME/.ssh/deploy_key -o StrictHostKeyChe
 
 # run after command!
 if [[ $INPUT_COMMAND ]]; then
-  ssh -i $HOME/.ssh/deploy_key -o StrictHostKeyChecking=no -p ${PORT:-22} $INPUT_HOST "$INPUT_COMMAND"
+  sh -c "ssh -i $HOME/.ssh/deploy_key -o StrictHostKeyChecking=no -p ${PORT:-22} $INPUT_HOST '$INPUT_COMMAND'"
 fi

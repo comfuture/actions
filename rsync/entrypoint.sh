@@ -13,3 +13,8 @@ chmod 0400 "$HOME/.ssh/deploy_key"
 
 # run!
 sh -c "rsync $INPUT_OPTIONS -e 'ssh -i $HOME/.ssh/deploy_key -o StrictHostKeyChecking=no -p $SSH_PORT' $SOURCE $INPUT_DEST"
+
+# run after command!
+if [[ $INPUT_COMMAND ]]; then
+  ssh -i $HOME/.ssh/deploy_key -o StrictHostKeyChecking=no -p ${PORT:-22} $INPUT_HOST "$INPUT_COMMAND"
+fi

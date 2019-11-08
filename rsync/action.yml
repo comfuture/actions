@@ -12,6 +12,9 @@ inputs:
   dest:
     description: target location `user@server:path`
     required: true
+  command:
+    description: ssh command that runs on remote server after rsync is done.
+    required: false
   ssh-port:
     description: ssh port (default=22)
     required: false

@@ -2,21 +2,18 @@ name: Test rsync action
 
 on:
   push:
-    branches:
-    - master
-    path:
-    - rsync/*
+    paths:
+    - rsync/**
+    - .github/workflows/test-rsync-action.yml
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v1
-    # simple message
     - uses: ./rsync
       with:
         dest: ubuntu@sg.changkyun.kim:/tmp/actions
+        command: ls -al
       env:
         SSH_KEY: ${{ secrets.SSH_KEY }}

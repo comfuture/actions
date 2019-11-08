@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eu
+set -e
 
 # setup variables
 SSH_PORT=${INPUT_SSH_PORT:-22}

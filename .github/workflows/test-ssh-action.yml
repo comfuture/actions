@@ -2,8 +2,6 @@ name: Test ssh action
 
 on:
   push:
-    branches:
-    - master
     paths:
     - ssh/*
 
@@ -11,6 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v1
     - uses: ./ssh
       with:
         host: ubuntu@sg.changkyun.kim

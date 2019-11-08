@@ -6,6 +6,8 @@ SSH_PORT=${INPUT_SSH_PORT:-22}
 SOURCE=${INPUT_SOURCE:-.}
 HOST=$(echo $INPUT_DEST | cut -d ':' -f 1)
 
+echo "HOST=$HOST"
+echo "COMMAND=$INPUT_COMMAND"
 
 # copy private keys temporary
 mkdir $HOME/.ssh

@@ -1,5 +1,7 @@
 # actions/ssh
 
+![](https://github.com/comfuture/actions/workflows/Test%20ssh%20action/badge.svg)
+
 Run a thing on your server.
 
 This action will run the command on your $HOST via SSH.

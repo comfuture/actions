@@ -15,7 +15,7 @@ inputs:
   command:
     description: ssh command that runs on remote server after rsync is done.
     required: false
-  ssh-port:
+  port:
     description: ssh port (default=22)
     required: false
     default: 22

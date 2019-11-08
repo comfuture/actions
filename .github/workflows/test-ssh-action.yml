@@ -1,0 +1,19 @@
+name: Test ssh action
+
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - ssh/*
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: ./ssh
+      with:
+        host: ubuntu@sg.changkyun.kim
+        command: ls -al
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}

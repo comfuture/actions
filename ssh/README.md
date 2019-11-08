@@ -1,48 +1,42 @@
-# SSH for GitHub Actions
+# actions/ssh
 
 Run a thing on your server.
 
-This action will run the provided argument as a command on your $HOST via SSH.
+This action will run the command on your $HOST via SSH.
 
-<img width="303" alt="image" src="https://user-images.githubusercontent.com/260/47310459-3eb48a80-d605-11e8-867f-702182404b51.png">
+## Secret keys
+
+- SSH_KEY
+  > content of private key
+
+## Options
+
+```yaml
+command:
+  description: ssh command that you want to run
+  required: true
+host:
+  description: remote server in `user@server` pattern
+  required: true
+port:
+  description: ssh port (default=22)
+  required: false
+  default: 22
+```
 
 ## Usage
 
-To use the action simply add the following lines to your `.github/main.workflow`
-
+```yaml
+on:
+  [push]
+jobs:
+  ls:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: comfuture/actions/ssh@master
+      with:
+        command: ls -al
+        host: user@me.com
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
 ```
-action "Run deploy script" {
-  uses = "maddox/actions/ssh@master"
-  args = "/opt/deploy/run"
-  secrets = [
-    "PRIVATE_KEY",
-    "HOST",
-    "USER"
-  ]
-}
-```
-
-### Required Arguments
-
-The argument you will use is the command that will be ran on your server via SSH.
-
-#### Examples
-
-* ```args = "/opt/deploy/run"```
-* ```args = "touch ~/.reload"```
-
-### Required Secrets
-
-You'll need to provide some secrets to use the action.
-
-* **PRIVATE_KEY**: Your SSH private key.
-* **HOST**: The host the action will SSH to to run the command. ie, `your.site.com`.
-* **USER**: The user the SSH command will auth as with the private key.
-
-### Optional Secrets
-
-* **PORT**: The port SSH is listening on. Default: `22`
-
-## License
-
-The Dockerfile and associated scripts and documentation in this project are released under the [MIT License](LICENSE).

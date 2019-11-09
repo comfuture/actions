@@ -1,0 +1,20 @@
+name: Publish kubectl image
+
+on:
+  push:
+    paths:
+    - kubectl/**
+    - .github/workflows/publish-kubectl-image.yml
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: login to github package repository
+      run: docker login docker.pkg.github.com -u comfuture -p ${{ secrets.GITHUB_TOKEN }}
+    - name: build and push
+      run: |
+        docker build -t docker.pkg.github.com/comfuture/actions/kubectl:latest .
+        docker push docker.pkg.github.com/comfuture/actions/kubectl:latest
+      working-directory: frontend

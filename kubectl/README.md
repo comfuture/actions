@@ -1,28 +1,22 @@
-# Github Action for Kubernetes CLI
+# actions/kubectl
 
 This action provides `kubectl` for Github Actions.
 
 ## Usage
 
-```hcl
-workflow "build and deploy" {
-  on = "push"
-  resolves = ["verify deployment"]
-}
+```yaml
+on: [push]
 
-action "deploy to cluster" {
-  needs = ["todo: build and push containers"]
-  uses = "comfuture/actions/kubectl@master"
-  args = "set image --record deployment/my-app container=$GITHUB_REPOSITORY:$GITHUB_SHA"
-  secrets = ["KUBE_CONFIG_DATA"]
-}
-
-action "verify deployment" {
-  needs = "deploy to cluster"
-  uses = "comfuture/actions/kubectl@master"
-  args = ["rollout status deployment/aws-example-octodex"]
-  secrets = ["KUBE_CONFIG_DATA"]
-}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: comfuture/actions/kubectl
+      with:
+        args: get pods -n default
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
 ```
 
 ## Secrets
@@ -34,4 +28,9 @@ cat $HOME/.kube/config | base64
 ```
 
 **Note**: Do not use kubectl config view as this will hide the certificate-authority-data.
+
+if your cluster is running EKS, aws credentials is needed to use `aws-iam-authenticator`.
+
+`AWS_ACCESS_KEY_ID` - amazon aws access key
+`AWS_SECRET_ACCESS_KEY` - aws secret access key
 

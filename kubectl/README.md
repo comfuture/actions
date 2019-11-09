@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: comfuture/actions/kubectl
+    - uses: comfuture/actions/kubectl@master
       with:
         args: get pods -n default
       env:

@@ -17,4 +17,4 @@ jobs:
       run: |
         docker build -t docker.pkg.github.com/comfuture/actions/kubectl:latest .
         docker push docker.pkg.github.com/comfuture/actions/kubectl:latest
-      working-directory: frontend
+      working-directory: kubectl

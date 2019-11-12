@@ -6,4 +6,4 @@ branding:
   color: blue
 runs:
   using: docker
-  image: docker://docker.pkg.github.com/comfuture/actions/kubectl:latest
+  image: Dockerfile

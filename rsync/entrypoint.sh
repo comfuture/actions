@@ -11,7 +11,7 @@ echo "PORT=$PORT"
 echo "COMMAND=$INPUT_COMMAND"
 
 # copy private keys temporary
-mkdir $HOME/.ssh
+mkdir -p $HOME/.ssh
 chmod 0700 $HOME/.ssh
 echo "$SSH_KEY" > $HOME/.ssh/deploy_key
 chmod 0400 "$HOME/.ssh/deploy_key"

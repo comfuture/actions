@@ -24,7 +24,7 @@ class YAML {
    * @param {string} s YAML string to parse
    */
   static parse(s) {
-    const tokens = str.match(/(---|true|false|null|#(.*)|\[(.*?)\]|\{(.*?)\}|[\w\-]+:|-(.+)|\d+\.\d+|\d+|\n+)/g)
+    const tokens = s.match(/(---|true|false|null|#(.*)|\[(.*?)\]|\{(.*?)\}|[\w\-]+:|-(.+)|\d+\.\d+|\d+|\n+)/g)
     return new this()._traverse(tokens)
   }
 
@@ -45,7 +45,7 @@ class YAML {
   }
 }
 
-(async () => {
+try {
   const { hostname, path, port = 443 } = new URL(getInput('webhook'))
   const variables = YAML.parse(getInput('variables'))
   const data = JSON.stringify(variables)
@@ -71,7 +71,7 @@ class YAML {
   req.write(data)
   req.end()
 
-})().catch(e => {
+} catch(e)  {
   // nothing
   setFailed(e.toString())
-})
+}

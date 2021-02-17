@@ -1,4 +1,4 @@
-# slack
+# slack-workflow
 
 send a post request to slack workflow webhook
 

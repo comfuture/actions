@@ -71,7 +71,6 @@ try {
   req.write(data)
   req.end()
 
-} catch(e)  {
-  // nothing
+} catch(e) {
   setFailed(e.toString())
 }

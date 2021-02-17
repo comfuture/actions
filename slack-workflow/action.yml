@@ -1,0 +1,16 @@
+name: slack-workflow
+author: comfuture<comfuture@gmail.com>
+description: Post workflow webhook with variables
+branding:
+  icon: mic
+  color: purple
+inputs:
+  webhook:
+    description: url to send workflow trigger
+    required: true
+  variables:
+    description: Message to say
+    required: false
+runs:
+  using: node12
+  main: index.js

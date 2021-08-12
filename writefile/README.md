@@ -15,7 +15,7 @@ steps:
   - uses: comfuture/actions/writefile@master
     with:
       filename: .env
-      content: ${{ secrets.dotenv }}
+      content: ${{ secrets.DOTENV }}
 ```
 
 of course, you can also use plain bash script like this:

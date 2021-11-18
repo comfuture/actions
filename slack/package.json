@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@actions/core": "^1.2.0",
-    "@slack/web-api": "^5.4.0",
+    "@actions/core": "^1.6.0",
+    "@slack/web-api": "^6.5.0",
     "yaml": "^1.7.2"
   }
 }

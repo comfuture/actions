@@ -10,7 +10,7 @@ OWNER="$(echo $GITHUB_REPOSITORY | cut -d'/' -f 1)"
 REPONAME="$(echo $GITHUB_REPOSITORY | cut -d'/' -f 2)"
 PAGES_REPO="${OWNER}.github.io"
 if [[ "$REPONAME" == "$PAGES_REPO" ]]; then
-  TARGET_BRANCH="master"
+  TARGET_BRANCH=$GITHUB_BASE_REF
 else
   TARGET_BRANCH="gh-pages"
 fi
@@ -28,7 +28,7 @@ git remote rm origin || true
 git remote add origin "${REPO}"
 git add .
 git commit --allow-empty -m 'Deploy to GitHub pages'
-git push --force $REPO master:$REMOTE_BRANCH
+git push --force $REPO $GITHUB_BASE_REF:$REMOTE_BRANCH
 rm -rf .git
 cd $GITHUB_WORKSPACE
 echo "Content of $BUILD_DIR has been deployed to GitHub Pages."

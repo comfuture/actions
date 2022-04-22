@@ -18,8 +18,8 @@ fi
 : "${REMOTE_BRANCH:=$TARGET_BRANCH}"
 
 git config --global init.defaultBranch main
-git config user.name "${GITHUB_ACTOR}"
-git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+git config --global user.name "${GITHUB_ACTOR}"
+git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git init
 git branch -m main
 if [ -z "$(git status --porcelain)" ]; then

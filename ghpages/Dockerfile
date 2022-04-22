@@ -1,4 +1,4 @@
-FROM alpine/git:latest
+FROM alpine/git:v2.32.0
 
 LABEL "maintainer"="Changkyun Kim <comfuture@gmail.com>"
 LABEL "repository"="http://github.com/comfuture/actions/ghpages"

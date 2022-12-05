@@ -14,7 +14,7 @@ inputs:
   port:
     description: ssh port (default=22)
     required: false
-    default: 22
+    default: '22'
 runs:
   using: docker
   image: Dockerfile

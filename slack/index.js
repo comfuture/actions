@@ -2,14 +2,10 @@ const core = require('@actions/core');
 const YAML = require('yaml');
 const { WebClient } = require('@slack/web-api');
 
-function getInput(name) {
-  return core.getInput(name);
-}
-
 function getJSON(name) {
   let ret;
   try {
-    let param = getInput(name);
+    let param = core.getInput(name);
     if (param && (ret = YAML.parse(param))) {
       return ret;
     }
@@ -34,7 +30,7 @@ function getJSON(name) {
   payload['attachments'] = getJSON('attachments');
 
   let res;
-  let ts = getInput('update');
+  let ts = core.getInput('update');
   if (ts) {
     // update
     payload['ts'] = ts;

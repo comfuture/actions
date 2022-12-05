@@ -1,9 +1,0 @@
-name: Kubectl
-author: Changkyun Kim <comfuture@gmail.com>
-description: kubectl command with aws-iam-authenticator included
-branding:
-  icon: server
-  color: blue
-runs:
-  using: docker
-  image: Dockerfile

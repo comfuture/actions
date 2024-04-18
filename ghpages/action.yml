@@ -18,8 +18,10 @@ runs:
       shell: bash
       env:
         INPUT_BUILD_DIR: ${{ inputs.build_dir }}
+        INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
       run: |
         BUILD_DIR=${INPUT_BUILD_DIR:-'.'}
+        GITHUB_TOKEN=${INPUT_GITHUB_TOKEN:-$GITHUB_TOKEN}
         echo "cd $BUILD_DIR"
         cd $BUILD_DIR
 

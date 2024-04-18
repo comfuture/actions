@@ -2,6 +2,7 @@
 
 set -e
 
+BUILD_DIR=${INPUT_BUILD_DIR:-'.'}
 echo "cd $BUILD_DIR"
 cd $BUILD_DIR
 

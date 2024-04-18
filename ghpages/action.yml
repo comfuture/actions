@@ -5,12 +5,12 @@ branding:
   icon: git-branch
   color: green
 inputs:
+  github_token:
+    description: github token
+    required: true
   build_dir:
     description: path to source directory
-    required: true
-outputs:
-  message_ts:
-    description: ts of sent message if available
+    default: dist
 runs:
   using: docker
   image: Dockerfile

@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
       - name: Alias latest tag
         run: |
           export VERSION=$(echo ${{ github.ref }} | cut -d '/' -f 3)

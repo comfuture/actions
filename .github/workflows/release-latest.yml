@@ -12,7 +12,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Alias latest tag
         run: |
-          export MAJOR_VERSION=$(echo ${{ github.ref }} | cut -d '.' -f 1)
+          export VERSION=$(echo ${{ github.ref }} | cut -d '/' -f 3)
+          export MAJOR_VERSION=$(echo $VERSION | cut -d '.' -f 1)
           git config --global user.name ${{ github.actor }}
           git config --global user.email ${{ github.actor }}@users.noreply.github.com
           git tag -fa $MAJOR_VERSION -m "Update to $MAJOR_VERSION"

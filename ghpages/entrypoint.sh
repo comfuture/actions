@@ -3,6 +3,7 @@
 set -e
 
 BUILD_DIR=${INPUT_BUILD_DIR:-'.'}
+GITHUB_TOKEN=${ACTIONS_RUNTIME_TOKEN:-$INPUT_GITHUB_TOKEN}
 echo "cd $BUILD_DIR"
 cd $BUILD_DIR
 
@@ -33,7 +34,7 @@ if git remote | grep -q 'origin'; then
     git remote rm origin
 fi
 if ! git remote | grep -q 'origin'; then
-    echo "add origin"
+    echo "add origin $REPO"
     git remote add origin "${REPO}"
 fi
 git add .

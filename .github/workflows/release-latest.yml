@@ -1,0 +1,21 @@
+name: Update latest tag
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  update-latest-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Push latest tag
+        run: |
+          export MAJOR_VERSION=$(echo ${{ github.ref }} | cut -d '.' -f 1)
+          git config --global user.name ${{ github.actor }}
+          git config --global user.email ${{ github.actor }}@users.noreply.github.com
+          git tag -fa latest -m "Update to latest version"
+          git push -f origin $MAJOR_VERSION
+          git push -f origin latest

@@ -28,8 +28,14 @@ if [ -z "$(git status --porcelain)" ]; then
     echo "Nothing to publish"
     exit 0
 fi
-git remote rm origin || true
-git remote add origin "${REPO}"
+if git remote | grep -q 'origin'; then
+    echo "remove existing origin"
+    git remote rm origin
+fi
+if ! git remote | grep -q 'origin'; then
+    echo "add origin"
+    git remote add origin "${REPO}"
+fi
 git add .
 git commit --allow-empty -m 'Deploy to GitHub pages'
 git push --force $REPO main:$REMOTE_BRANCH

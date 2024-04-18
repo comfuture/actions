@@ -21,6 +21,7 @@ fi
 git config --global init.defaultBranch main
 git config --global user.name "${GITHUB_ACTOR}"
 git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+git config --global --add safe.directory "$BUILD_DIR"
 git init
 git branch -m main
 if [ -z "$(git status --porcelain)" ]; then

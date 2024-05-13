@@ -1,0 +1,31 @@
+name: Test writefile action
+
+on:
+  push:
+    paths:
+      - writefile/**
+      - .github/workflows/test-writefile-action.yml
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./writefile
+        with:
+          filename: test.txt
+          content: "Hello, world!"
+      - run: |
+          if [ -f test.txt ]; then
+          echo "File created successfully"
+          file_content=$(cat test.txt)
+          if [ "$file_content" == "Hello, world!" ]; then
+            echo "File content is 'Hello, world!'"
+          else
+            echo "File content is not 'Hello, world!'"
+            exit 1
+          fi
+          else
+          echo "File creation failed"
+          exit 1
+          fi
